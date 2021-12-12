@@ -1,0 +1,117 @@
+create table Estudiante
+(
+   IdEstudiante int primary key identity(1,1),
+   Nombre varchar(50),
+   Matricula nchar(6),
+   FechaRegistro datetime
+)
+
+create table Curso
+(
+   IdCurso int primary key identity(1,1),
+   Nombre varchar(50),
+   Duracion varchar(50),
+   Precio int,
+   FechaRegistro datetime
+)
+
+create table Profesor
+(
+  IdProfesor int primary key identity(1,1),
+  Nombre varchar(50),
+  Curso varchar(50),
+  FechaRegistro datetime
+)
+
+create table Inscripcion
+(
+  IdInscripcion int primary key identity(1,1),
+  IdEstudiante int not null,
+  IdProfesor int not null,
+  IdCurso int not null,
+  constraint fkEstudiante foreign key(IdEstudiante) references Estudiante(IdEstudiante),
+  constraint fkProfesor foreign key(IdProfesor) references Profesor(IdProfesor),
+  constraint fkCurso foreign key(IdCurso) references Curso(IdCurso),
+  FechaRegistro datetime
+)
+
+create table Calificacion
+(
+  IdCalificacion int primary key identity(1,1),
+  PrimerParcial int,
+  SegundoParcial int,
+  TercerParcial int,
+  IdInscripcion int not null,
+  constraint fkInscripcion foreign key(IdInscripcion) references Inscripcion(IdInscripcion),
+  FechaRegistro datetime
+)
+
+
+
+Estudiante
+
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Jose',263561,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Maria',564668,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Pedro',964823,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Blanco',264387,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Bladimir',189756,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Oscar',643875,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Josefina',397845,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Alturo',532166,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('jerman',741258,'2021-8-3')
+insert into Estudiante (Nombre,Matricula,FechaRegistro) values ('Jesus',963258,'2021-8-3')
+
+
+Curso
+
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Logistica chain supply Management','70 horas',15000,'2021-6-7')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Auditoria y Control Interno','75 horas',5000,'2021-6-9')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Electronica','80 horas',25000,'2021-6-3')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Ingenieria de Calidad','60 horas',12000,'2021-6-2')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Gestion Aduanera','120 horas',8000,'2021-6-6')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Mecanica','100 horas',25000,'2021-6-1')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Electronica','110 horas',5000,'2021-6-5')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Programacion','50 horas',25000,'2021-6-3')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Exel Basico','30 horas',20000,'2021-6-4')
+insert into Curso (Nombre,Duracion,Precio,FechaRegistro) values('Exel Avanzado','40 horas',25000,'2021-6-2')
+
+profezor
+
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Miguel','Informatica','2021-12-4')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Suzana','Ingles','2021-12-5')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Miguel','Bases de datos','2021-12-5')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Miguel','Electronica','2021-12-1')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Francisco','Exel Basico','2021-12-8')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Francisco','Exel Avanzado','2021-12-8')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Samuel','Mecanica','2021-12-9')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Miguel','Frances','2021-12-9')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Maria','Programacion','2021-12-2')
+insert into Profesor(Nombre,Curso,FechaRegistro) values('Miguel','Redes informatica','2021-12-2')
+
+
+Inscripcion
+
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(6,5,8,'2021-3-1')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(2,3,8,'2021-6-8')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(7,1,9,'2021-4-6')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(2,3,2,'2021-8-4')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(5,7,3,'2021-2-7')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(2,4,2,'2021-1-2')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(4,4,1,'2021-3-1')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(6,2,10,'2021-7-9')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(9,8,2,'2021-8-3')
+insert into Inscripcion(IdEstudiante,IdProfesor,IdCurso,FechaRegistro) values(1,3,5,'2021-9-8')
+
+Calificacione
+
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(30,24,20,5,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(30,22,21,6,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(20,13,18,8,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(25,19,20,2,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(27,30,20,1,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(30,28,20,3,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(24,30,20,10,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(22,20,20,4,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(28,26,20,7,'2021-6-4')
+insert into Calificacion(PrimerParcial,SegundoParcial,TercerParcial,IdInscripcion,FechaRegistro) values(30,15,20,9,'2021-6-4')
+
